@@ -44,12 +44,15 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <b-dropdown>
+                                <button class="button is-primary" slot="trigger">
+                                    <span> {{ Auth::user()->name }} </span>
+                                    <b-icon icon="menu-down"></b-icon>
+                                </button>
+                                   
+                                
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <b-dropdown-item>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -59,8 +62,8 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
+                                </b-dropdown-item>
+                            </b-dropdown>
                         @endguest
                     </ul>
                 </div>
